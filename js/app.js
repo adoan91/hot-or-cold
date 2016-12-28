@@ -1,4 +1,20 @@
 var secretNum;
+newGame();
+// get user guess when user hits submit button
+$('form').submit(function(event) {
+	var guess = $('#js-user-guess').val();
+	//prompt(guess);
+
+	checkUserGuess(guess);
+	trackCount();
+	
+	$('#js-user-guess').val('');
+});
+
+$('ul.clearfix').on('click', 'a.new.js-new-game', function(event) {	
+	//prompt('clicked new game');
+	newGame();
+});
 
 function handleInstructionsModal() {
 	// when users click on the element with
@@ -81,23 +97,10 @@ function trackCount() {
 // This code says, when the document is ready, run the
 // `handleInstructionsModal` function.
 $(document).ready(function(){
+	
 	handleInstructionsModal();
 
-	// get user guess when user hits submit button
-	$('form').submit(function(event) {
-  		var guess = $('#js-user-guess').val();
-  		//prompt(guess);
-
-  		checkUserGuess(guess);
-  		trackCount();
-  		
-  		$('#js-user-guess').val('');
-  	});
-
-  	$('ul.clearfix').on('click', 'a.new.js-new-game', function(event) {	
-  		//prompt('clicked new game');
-  		newGame();
-  	});
+	
 
 });
 
