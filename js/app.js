@@ -31,9 +31,9 @@ function newGame() {
 function listItemInsert(num) { 
 
 	var out =
-	'<li>' +
-		num
-	'</li>';
+		'<li>' +
+			num
+		'</li>';
 
 	return out;
 }
@@ -44,18 +44,20 @@ function listReset() {
 }
 
 function checkUserGuess(guess) {
+	var r = Math.abs(guess - secretNum);
+
 	if (guess == secretNum) {
 		giveFeedback('You Win')
 	}
-	else if(Math.abs(guess - secretNum) < 10){
+	else if(r < 10){
 		giveFeedback('Very hot')
-	} else if(Math.abs(guess - secretNum) < 20 && Math.abs(guess - secretNum) > 10){
+	} else if(r < 20 && r > 10){
 		giveFeedback('Hot')
-	} else if(Math.abs(guess - secretNum) < 30 && Math.abs(guess - secretNum) > 20){
+	} else if(r < 30 && r > 20){
 		giveFeedback('Warm')
-	} else if(Math.abs(guess - secretNum) < 50 && Math.abs(guess - secretNum) > 30){
+	} else if(r < 50 && r > 30){
 		giveFeedback('Cold')
-	} else if(Math.abs(guess - secretNum) > 50){
+	} else if(r > 50){
 		giveFeedback('Ice cold')
 	}
 
@@ -80,7 +82,6 @@ function trackCount() {
 // `handleInstructionsModal` function.
 $(document).ready(function(){
 	handleInstructionsModal();
-	newGame();
 
 	// get user guess when user hits submit button
 	$('form').submit(function(event) {
