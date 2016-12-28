@@ -80,7 +80,7 @@ function trackCount() {
 // `handleInstructionsModal` function.
 $(document).ready(function(){
 	handleInstructionsModal();
-	newGame();
+	//newGame();
 
 	// get user guess when user hits submit button
 	$('form').submit(function(event) {
